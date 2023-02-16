@@ -13,6 +13,10 @@ class ThreeBodyProblem {
 
     void simulate();
 
+    std::array<boost::qvm::vec<double, 3>, 3> bodyPositions() {
+        return _bodyPositions;
+    }
+
   private:
     std::array<boost::qvm::vec<double, 3>, 3> _bodyPositions;
     std::array<boost::qvm::vec<double, 3>, 3> _bodyVelocities{};
