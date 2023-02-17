@@ -1,5 +1,5 @@
 add_library(fr_tbp
-  ../include/tbp/tbp.h
+  ../include/fr-tbp/tbp/tbp.h
   tbp/tbp.cpp)
 
 target_include_directories(fr_tbp PUBLIC ../include)
