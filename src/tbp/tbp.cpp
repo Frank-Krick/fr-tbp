@@ -5,7 +5,7 @@
 using boost::qvm::vec;
 using std::array;
 
-void fr_tbp::ThreeBodyProblem::simulate() {
+void fr::tbp::ThreeBodyProblem::simulate() {
     auto accelerations = _calculateBodyAccelerations();
     _updateBodyPositions(accelerations);
     _updateVelocities(accelerations);
@@ -18,7 +18,7 @@ boost::qvm::vec<double, 3> accelerationComponent(double mass, double G,
 }
 
 std::array<boost::qvm::vec<double, 3>, 3>
-fr_tbp::ThreeBodyProblem::_calculateBodyAccelerations() {
+fr::tbp::ThreeBodyProblem::_calculateBodyAccelerations() {
     array<vec<double, 3>, 3> bodyAccelerations{};
     bodyAccelerations[0] =
         accelerationComponent(_masses[1], _gravitationalConstant,
@@ -38,7 +38,7 @@ fr_tbp::ThreeBodyProblem::_calculateBodyAccelerations() {
     return bodyAccelerations;
 }
 
-void fr_tbp::ThreeBodyProblem::_updateBodyPositions(
+void fr::tbp::ThreeBodyProblem::_updateBodyPositions(
     std::array<boost::qvm::vec<double, 3>, 3> accelerations) {
     for (int i = 0; i < 3; i++) {
         _bodyPositions[i] = _bodyPositions[i] +
@@ -47,7 +47,7 @@ void fr_tbp::ThreeBodyProblem::_updateBodyPositions(
     }
 }
 
-void fr_tbp::ThreeBodyProblem::_updateVelocities(
+void fr::tbp::ThreeBodyProblem::_updateVelocities(
     std::array<boost::qvm::vec<double, 3>, 3> accelerations) {
     for (int i = 0; i < 3; i++) {
         _bodyVelocities[i] = _bodyVelocities[i] + accelerations[i] * _deltaTime;

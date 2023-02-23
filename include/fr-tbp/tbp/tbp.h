@@ -1,7 +1,7 @@
 #include <array>
 #include <boost/qvm/vec.hpp>
 
-namespace fr_tbp {
+namespace fr::tbp {
 
 class ThreeBodyProblem {
   public:
