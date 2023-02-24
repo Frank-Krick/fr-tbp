@@ -7,8 +7,8 @@ using std::array;
 
 void fr::tbp::ThreeBodyProblem::simulate() {
     auto accelerations = _calculateBodyAccelerations();
-    _updateBodyPositions(accelerations);
     _updateVelocities(accelerations);
+    _updateBodyPositions();
 }
 
 boost::qvm::vec<double, 3> accelerationComponent(double mass, double G,
@@ -38,12 +38,10 @@ fr::tbp::ThreeBodyProblem::_calculateBodyAccelerations() {
     return bodyAccelerations;
 }
 
-void fr::tbp::ThreeBodyProblem::_updateBodyPositions(
-    std::array<boost::qvm::vec<double, 3>, 3> accelerations) {
+void fr::tbp::ThreeBodyProblem::_updateBodyPositions() {
     for (int i = 0; i < 3; i++) {
         _bodyPositions[i] = _bodyPositions[i] +
-                            _bodyVelocities[i] * _deltaTime +
-                            0.5 * accelerations[i] * _deltaTime * _deltaTime;
+                            _bodyVelocities[i] * _deltaTime;
     }
 }
 

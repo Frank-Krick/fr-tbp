@@ -25,7 +25,7 @@ class ThreeBodyProblem {
     double _gravitationalConstant;
 
     std::array<boost::qvm::vec<double, 3>, 3> _calculateBodyAccelerations();
-    void _updateBodyPositions(std::array<boost::qvm::vec<double, 3>, 3> accelerations);
+    void _updateBodyPositions();
     void _updateVelocities(std::array<boost::qvm::vec<double, 3>, 3> accelerations);
 };
 
