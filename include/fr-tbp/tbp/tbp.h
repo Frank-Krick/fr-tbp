@@ -6,10 +6,12 @@ namespace fr::tbp {
 class ThreeBodyProblem {
   public:
     ThreeBodyProblem(std::array<boost::qvm::vec<double, 3>, 3> bodyPositions,
+                     std::array<boost::qvm::vec<double, 3>, 3> bodyVelocities,
                      std::array<double, 3> masses, double deltaTime,
                      double gravitationalConstant)
         : _bodyPositions(bodyPositions), _masses(masses), _deltaTime(deltaTime),
-          _gravitationalConstant(gravitationalConstant){};
+          _gravitationalConstant(gravitationalConstant),
+          _bodyVelocities(bodyVelocities){};
 
     void simulate();
 
@@ -19,14 +21,15 @@ class ThreeBodyProblem {
 
   private:
     std::array<boost::qvm::vec<double, 3>, 3> _bodyPositions;
-    std::array<boost::qvm::vec<double, 3>, 3> _bodyVelocities{};
+    std::array<boost::qvm::vec<double, 3>, 3> _bodyVelocities;
     std::array<double, 3> _masses;
     double _deltaTime;
     double _gravitationalConstant;
 
     std::array<boost::qvm::vec<double, 3>, 3> _calculateBodyAccelerations();
     void _updateBodyPositions();
-    void _updateVelocities(std::array<boost::qvm::vec<double, 3>, 3> accelerations);
+    void
+    _updateVelocities(std::array<boost::qvm::vec<double, 3>, 3> accelerations);
 };
 
-} // namespace fr_tbp
+} // namespace fr::tbp
