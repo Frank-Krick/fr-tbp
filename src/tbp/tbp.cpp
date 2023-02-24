@@ -21,17 +21,17 @@ std::array<boost::qvm::vec<double, 3>, 3>
 fr::tbp::ThreeBodyProblem::_calculateBodyAccelerations() {
     array<vec<double, 3>, 3> bodyAccelerations{};
     bodyAccelerations[0] =
-        accelerationComponent(_masses[1], _gravitationalConstant,
+        -1 * accelerationComponent(_masses[1], _gravitationalConstant,
                               _bodyPositions[0], _bodyPositions[1]) -
         accelerationComponent(_masses[2], _gravitationalConstant,
                               _bodyPositions[0], _bodyPositions[2]);
     bodyAccelerations[1] =
-        accelerationComponent(_masses[2], _gravitationalConstant,
+        -1 * accelerationComponent(_masses[2], _gravitationalConstant,
                               _bodyPositions[1], _bodyPositions[2]) -
         accelerationComponent(_masses[0], _gravitationalConstant,
                               _bodyPositions[1], _bodyPositions[0]);
     bodyAccelerations[2] =
-        accelerationComponent(_masses[0], _gravitationalConstant,
+        -1 * accelerationComponent(_masses[0], _gravitationalConstant,
                               _bodyPositions[2], _bodyPositions[0]) -
         accelerationComponent(_masses[1], _gravitationalConstant,
                               _bodyPositions[2], _bodyPositions[1]);
