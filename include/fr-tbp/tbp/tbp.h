@@ -19,6 +19,14 @@ class ThreeBodyProblem {
         return _bodyPositions;
     }
 
+    void setGravitationalConstant(double gravitationalConstant) {
+        _gravitationalConstant = gravitationalConstant;
+    }
+
+    [[nodiscard]] double gravitationalConstant() const {
+        return _gravitationalConstant;
+    }
+
   private:
     std::array<boost::qvm::vec<double, 3>, 3> _bodyPositions;
     std::array<boost::qvm::vec<double, 3>, 3> _bodyVelocities;
